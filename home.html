@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baye Lahad Mbacke - Academic Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #004499;
+            text-decoration: underline;
+        }
+
+        .nav a.active {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .email {
+            color: #0066cc;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        .bio {
+            font-size: 16px;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .trajectory {
+            font-size: 15px;
+            color: #555;
+            font-style: italic;
+        }
+
+        .trajectory strong {
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-item:last-child, .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .item-institution {
+            font-size: 16px;
+            color: #0066cc;
+            margin-bottom: 2px;
+        }
+
+        .item-location {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .item-date {
+            color: #666;
+            font-size: 14px;
+            white-space: nowrap;
+            font-style: italic;
+        }
+
+        .item-description {
+            color: #555;
+            font-size: 15px;
+            text-align: justify;
+            margin-top: 10px;
+        }
+
+        .item-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .item-description li {
+            margin-bottom: 5px;
+        }
+
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .skill-list {
+            color: #555;
+            font-size: 15px;
+        }
+
+        .languages-section {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .language-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .language-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .language-level {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .interests-section {
+            margin-top: 20px;
+        }
+
+        .interests-section p {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .skills-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .languages-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="#" class="active">Home</a>
+        <a href="#">Research</a>
+        <a href="#">Publications</a>
+        <a href="#">Code & Data</a>
+        <a href="#">Students</a>
+        <a href="#">Service</a>
+        <a href="#">CV</a>
+    </nav>
+
+    <div class="header">
+        <h1 class="name">Baye Lahad Mbacke</h1>
+        <a href="mailto:lahadmbacke00@gmail.com" class="email">lahadmbacke00@gmail.com</a>
+        
+        <div class="contact-info">
+            <span>📱 06 01 32 80 22</span>
+            <span>📍 10 rue de Roumanie, Rennes, France</span>
+            <span>💼 <a href="https://linkedin.com/in/baye-lahad-mbacke" style="color: #0066cc;">LinkedIn</a></span>
+            <span>🔗 <a href="https://github.com/LahadMbacke" style="color: #0066cc;">GitHub</a></span>
+        </div>
+        
+        <p class="bio">
+            I am a Master's student in Machine Learning and Automatic Language Processing (ATAL) at Nantes University, with a strong background in Natural Language Processing and practical R&D experience. My work focuses on geotagging, entity extraction and classification in journalistic content. I am deeply motivated to pursue a PhD in Artificial Intelligence, with research interests in enhancing automatic natural language understanding through advanced models and innovative fine-tuning methods. Currently, I am working as an Assistant Data Scientist at Ouest-France, specializing in geographical entity disambiguation and knowledge extraction from press articles.
+        </p>
+        
+        <p class="trajectory">
+            <strong>trajectory:</strong> undergraduate student in Mathematics-Computer Science at Cheikh Anta Diop University, Dakar (Senegal) → Bachelor's in Computer Science at University of Strasbourg (France) → Master's student in ATAL at Nantes University (France) → Research intern at Digital Sciences Laboratory of Nantes → Assistant Data Scientist at Ouest-France (France).
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Master ATAL (Machine Learning and Automatic Language Processing)</div>
+                    <div class="item-institution">Nantes University</div>
+                    <div class="item-location">Nantes, France</div>
+                </div>
+                <div class="item-date">2023–2025</div>
+            </div>
+            <div class="item-description">
+                Specialization in advanced NLP techniques and machine learning methodologies, with focus on modern language models, deep learning architectures, and automatic language processing systems.
+            </div>
+        </div>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Bachelor's Degree in Computer Science (L3)</div>
+                    <div class="item-institution">University of Strasbourg</div>
+                    <div class="item-location">Strasbourg, France</div>
+                </div>
+                <div class="item-date">2022–2023</div>
+            </div>
+            <div class="item-description">
+                Advanced study in algorithms and programming, building strong foundations in computational thinking, software development, and computer science theory.
+            </div>
+        </div>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Bachelor's Degree in Mathematics-Computer Science</div>
+                    <div class="item-institution">Cheikh Anta Diop University of Dakar</div>
+                    <div class="item-location">Dakar, Senegal</div>
+                </div>
+                <div class="item-date">2018–2022</div>
+            </div>
+            <div class="item-description">
+                Comprehensive training in mathematical foundations and computer science fundamentals, providing strong analytical and problem-solving skills across both domains.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Assistant Data Scientist – Research & Development</div>
+                    <div class="item-institution">Ouest-France</div>
+                    <div class="item-location">Rennes, Brittany, France</div>
+                </div>
+                <div class="item-date">Sept. 2024–Present</div>
+            </div>
+            <div class="item-description">
+                Working on geotagging systems for identifying location references from address fragments in journalistic articles. Developing entity linking systems for geographical locations and conducting knowledge extraction projects including named entity recognition and relationship mapping. Specializing in geographical entity disambiguation for addresses, places, monuments, and cities.
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Research Intern</div>
+                    <div class="item-institution">Digital Sciences Laboratory of Nantes</div>
+                    <div class="item-location">Nantes, France</div>
+                </div>
+                <div class="item-date">Jan. 2024–May 2024</div>
+            </div>
+            <div class="item-description">
+                Conducted comparative analysis of named entity recognition systems on press articles. Applied machine learning techniques for key information extraction, participated in annotation and analysis of structured and unstructured data, and evaluated different approaches in automatic language processing.
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Academic Project - DEFT2013 Competition</div>
+                    <div class="item-institution">Nantes University</div>
+                    <div class="item-location">Nantes, France</div>
+                </div>
+                <div class="item-date">Feb. 2024–Mar. 2024</div>
+            </div>
+            <div class="item-description">
+                Developed classification models for recipe categorization (Main Course, Appetizer, Dessert) using natural language processing and machine learning techniques. Implemented classification systems based on recipe titles and instructions.
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Academic Project - Autoencoders and Classification</div>
+                    <div class="item-institution">University of Strasbourg</div>
+                    <div class="item-location">Strasbourg, France</div>
+                </div>
+                <div class="item-date">Apr. 2023–May 2023</div>
+            </div>
+            <div class="item-description">
+                Evaluated the effectiveness of autoencoders for tabular data classification. Implemented neural networks for data compression and representation, built compression functions in reduced-dimension latent spaces, and conducted comparative analysis of classification performance.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="skills-section">
+            <div class="skill-category">
+                <h3>Machine Learning & Deep Learning</h3>
+                <div class="skill-list">
+                    PyTorch, Scikit-learn, Large Language Models (LLM), Fine-tuning, Quantization, Distillation
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Natural Language Processing</h3>
+                <div class="skill-list">
+                    Spacy, NLTK, LangChain, RAG, AI Agents
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-list">
+                    Python, R, Java, C/C++
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skill-list">
+                    SQL, MySQL, Oracle, PostgreSQL, MongoDB
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Languages</h2>
+        <div class="languages-section">
+            <div class="language-item">
+                <div class="language-name">Wolof</div>
+                <div class="language-level">Native Language</div>
+            </div>
+            <div class="language-item">
+                <div class="language-name">French</div>
+                <div class="language-level">Fluent</div>
+            </div>
+            <div class="language-item">
+                <div class="language-name">English</div>
+                <div class="language-level">Read, Written, Spoken</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Interests</h2>
+        <div class="interests-section">
+            <p><strong>Research:</strong> Natural Language Processing, Machine Learning, Information Extraction, Geographical Entity Recognition</p>
+            <p><strong>Reading:</strong> Scientific papers, technology news, current affairs</p>
+            <p><strong>Culture:</strong> Theater performances, Mbalax music, cultural events</p>
+            <p><strong>Sports:</strong> Football</p>
+        </div>
+    </div>
+</body>
+</html>
